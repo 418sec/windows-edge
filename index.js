@@ -5,7 +5,7 @@ const tasklist = require('tasklist');
 module.exports = launch;
 function launch (opts, cb) {
   opts = Object.assign({ poll: true, pollInterval: 3000 }, opts);
-  exec('start microsoft-edge:' + opts.uri, (err, stdout, stderr) => {
+  exec('start microsoft-edge:' + encodeURI(opts.uri), (err, stdout, stderr) => {
     if (err) return cb(err);
     const ee = new EventEmitter();
 
